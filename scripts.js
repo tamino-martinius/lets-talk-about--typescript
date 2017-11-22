@@ -1,7 +1,3 @@
-if (navigator.userAgent.includes('Firefox')) {
-  document.body.classList.add('firefox');
-}
-
 const options = {
   threshold: [0, 1.0],
 };
