@@ -1,0 +1,68 @@
+// Reset
+
+html
+body
+.slides
+article
+article:before
+article:after
+  width 100%
+  height 100%
+  box-sizing border-box
+
+body
+  margin 0
+  padding 0
+  font-family Arial, Helvetica, sans-serif
+  font-weight 500
+  user-select none
+
+// Mixin
+random(min,max)
+  return floor(math(0, 'random')*(max - min + 1) + min)
+
+// Design
+article
+  opacity 0
+  transition 0.2s opacity
+  padding 50px
+  position absolute
+  &:before
+  &:after
+    content ''
+    display block
+    position absolute
+    top 0
+    left 0
+  &:before
+    z-index -2
+    filter grayscale(100%) contrast(160%)
+    background-size cover
+    background-position center center
+  &:after
+    z-index -1
+    opacity 0.8
+    background-image radial-gradient(75vw, #fff 0%, #eee 50%, #765 100%)
+  &.plain
+    &:before, &:after
+      display none
+  &.section
+    &:after
+      background-image radial-gradient(75vw, #0AD159 0%, #22b75d 50%, #765 100%)
+
+.far-past { z-index: 3; }
+.past     { z-index: 4; }
+.current  { z-index: 5; opacity 1; }
+.next     { z-index: 6; }
+.far-next { z-index: 7; }
+
+
+for num in 1...13
+  // path = "images/bg/"+ random(1,2)+".jpg"
+  path = "images/bg/" + num + ".jpg"
+  .slides > article:nth-child(39n+{num})
+    &:before
+      background-image url(path)
+
+h1,h2,h3,h4,h5,h6
+  color #0AD159

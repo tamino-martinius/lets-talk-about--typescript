@@ -1,0 +1,115 @@
+html,
+body,
+.slides,
+article,
+article:before,
+article:after {
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+article {
+  opacity: 0;
+  -webkit-transition: 0.2s opacity;
+  transition: 0.2s opacity;
+  padding: 50px;
+  position: absolute;
+}
+article:before,
+article:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+article:before {
+  z-index: -2;
+  -webkit-filter: grayscale(100%) contrast(160%);
+          filter: grayscale(100%) contrast(160%);
+  background-size: cover;
+  background-position: center center;
+}
+article:after {
+  z-index: -1;
+  opacity: 0.8;
+  background-image: radial-gradient(75vw, #fff 0%, #eee 50%, #765 100%);
+}
+article.plain:before,
+article.plain:after {
+  display: none;
+}
+article.section:after {
+  background-image: radial-gradient(75vw, #0ad159 0%, #22b75d 50%, #765 100%);
+}
+.far-past {
+  z-index: 3;
+}
+.past {
+  z-index: 4;
+}
+.current {
+  z-index: 5;
+  opacity: 1;
+}
+.next {
+  z-index: 6;
+}
+.far-next {
+  z-index: 7;
+}
+.slides > article:nth-child(39n+1):before {
+  background-image: url("images/bg/1.jpg");
+}
+.slides > article:nth-child(39n+2):before {
+  background-image: url("images/bg/2.jpg");
+}
+.slides > article:nth-child(39n+3):before {
+  background-image: url("images/bg/3.jpg");
+}
+.slides > article:nth-child(39n+4):before {
+  background-image: url("images/bg/4.jpg");
+}
+.slides > article:nth-child(39n+5):before {
+  background-image: url("images/bg/5.jpg");
+}
+.slides > article:nth-child(39n+6):before {
+  background-image: url("images/bg/6.jpg");
+}
+.slides > article:nth-child(39n+7):before {
+  background-image: url("images/bg/7.jpg");
+}
+.slides > article:nth-child(39n+8):before {
+  background-image: url("images/bg/8.jpg");
+}
+.slides > article:nth-child(39n+9):before {
+  background-image: url("images/bg/9.jpg");
+}
+.slides > article:nth-child(39n+10):before {
+  background-image: url("images/bg/10.jpg");
+}
+.slides > article:nth-child(39n+11):before {
+  background-image: url("images/bg/11.jpg");
+}
+.slides > article:nth-child(39n+12):before {
+  background-image: url("images/bg/12.jpg");
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #0ad159;
+}
