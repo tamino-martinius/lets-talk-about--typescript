@@ -1,0 +1,28 @@
+html, body {
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 24px;
+}
+
+.shiftplans {
+  display: block;
+  text-align: center;
+  list-style: none;
+}
+
+.shiftplans li {
+  display: inline;
+  padding: 0 5px;
+}
+
+.shiftplans li.active {
+  color: #66cc66;
+}
+
+.shifts li b {
+  display: block;
+}
+
+.shifts li.today b {
+  color: #66cc66;
+}
