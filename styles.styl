@@ -40,8 +40,9 @@ article
   &:before
     z-index -2
     filter grayscale(100%) contrast(160%)
-    background-size cover
-    background-position center center
+    background-size contain
+    background-repeat no-repeat
+    background-position top left
   &:after
     z-index -1
     opacity 0.95
@@ -55,7 +56,7 @@ article
     h1, h2, h3, h4, h5, h6
       color #fff
 
-$imageCount = 30
+$imageCount = 1
 for num in 1...$imageCount
   // path = "images/bg/"+ random(1,2)+".jpg"
   path = "images/bg/" + num + ".jpg"
@@ -105,6 +106,7 @@ ul
     margin 0 auto
     padding 0 2vw
     white-space pre-wrap
+    line-height 3.5vw
 
     .str { color: #65B042; } /* string  - green */
     .kwd { color: #E28964; } /* keyword - dark pink */

@@ -3,9 +3,7 @@ class Shift {
     public startsAt: Date,
     public endsAt: Date,
     public position: string,
-  ) {
-
-  }
+  ) {}
 
   get displayDate(): string {
     return this.startsAt.toLocaleDateString();
@@ -23,14 +21,15 @@ class Shift {
     return this.displayDate === new Date().toLocaleDateString();
   }
 
-  toHTML(): string {
+  toElement(): HTMLLIElement {
     const currentClass = this.isToday ? 'today' : '';
 
-    return `
-      <li class="${currentClass}">
-        <b>${this.position}</b>
-        <i>${this.displayDate} ${this.displayStart} - ${this.displayEnd}</i>
-      </li>
+    const el: HTMLLIElement = document.createElement('li');
+    if (this.isToday) el.classList.add('today');
+    el.innerHTML =`
+      <b>${this.position}</b>
+      <i>${this.displayDate} ${this.displayStart} - ${this.displayEnd}</i>
     `;
+    return el;
   }
 }
