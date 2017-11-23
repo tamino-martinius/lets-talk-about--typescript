@@ -10,7 +10,6 @@ html
         article
           h2 Lets Talk about...
           h1 TypeScript
-          h3 by Tamino
         article
           h1 What is TypeScript?
         article
@@ -79,20 +78,15 @@ html
         article
           h1 Why TypeScript?
         article
-          h2 Why TypeScript?
-          ul.build
-            li Productivity
-            li Reliability
-        article
           h1 Productivity
         article
-          h1
-            a(href="https://www.typescriptlang.org/play/index.html#src=function%20shiftplanPublishedMailer(employment)%20%7B%0D%0A%20%20%20%20console.log(%0D%0A%20%20%20%20%20%20%20%20employment.name%20%2B%20'%3C'%20%2B%20employment.email%20%2B%20'%3E'%0D%0A%20%20%20%20)%3B%0D%0A%7D%0D%0A")
-              | Demo
+          h1 Reliability
         article
-          h1 TypeScript Crash Course
+          h1
+            a(href="https://www.typescriptlang.org/play/index.html#src=function%20shiftplanPublishedMailer(receipient)%20%7B%0D%0A%20%20%20%20console.log(%0D%0A%20%20%20%20%20%20%20%20receipient.name%20%2B%20'%3C'%20%2B%20receipient.email%20%2B%20'%3E'%0D%0A%20%20%20%20)%3B%0D%0A%7D%0D%0A")
+              | Demo
         article.section
-          h1 Type Annotations
+          h1 TypeScript Overview
         article
           h2 Basic Types
           ul.build
@@ -109,24 +103,6 @@ html
               pre
                 | const name: string = 'Tamino';
         article
-          ul
-            li
-              | number
-              pre
-                | const luckyNumber: number = 8;
-            li
-              | boolean
-              pre
-                | const isActive: boolean = false;
-            li
-              | number
-              pre
-                | const name: string = 'Tamino';
-            li
-              | any
-              pre
-                | const anyVar: any = FooBar;
-        article
           h2 Multiple Types
           ul.build
             li
@@ -140,7 +116,18 @@ html
                 | let param: string | undefined = undefined;
             li
               pre
-                | let param: string | undefined = 8; // invalid
+                | let param: string | undefined = 8; // 💩
+        article
+          h2 Combined Types
+          ul.build
+            li
+              pre
+                | type optionalString = string | undefined;
+                | let param: optionalString;
+                | let param?: string;
+            li
+              pre
+                | type vote = 'yay' | 'nay';
         article
           h2 Array Declarations
           ul.build
@@ -151,7 +138,7 @@ html
             li
               | alternate
               pre
-                | const shifts: Array<Shift>;
+                | const shifts: Array&lt;Shift&gt;;
             li
               | Multi Dimensional
               pre
@@ -165,6 +152,26 @@ html
             li
               pre
                 | phoneBook['Tamino'] = '01577 3752563';
+            li
+              pre
+                | phoneBook['Tamino'] = 15773752563; // 💩
+            li
+              pre
+                | phoneBook[0] = '01577 3752563'; // 💩
+        article
+          h2 Dictionaries
+          ul.build
+            li
+              pre
+                | const phoneBook: {
+                |   emergency: string;
+                |   [name: string]: string;
+                | };
+            li
+              pre
+                | class Foo {
+                |   [key: string]: any;
+                | }
         article
           h2 Functions
           ul.build
@@ -186,15 +193,16 @@ html
                 | }
         article
           h2 Function overloading
-          ul.build
+          ul
             li
               pre
+                | type nuStr = number | str;
                 | class Foo {
-                |   bar(params: string[]): string | number { ... }
+                |   bar(params: nuStr[]): nuStr { ... }
                 | }
         article
           h2 Function overloading
-          ul.build
+          ul
             li
               pre
                 | class Foo {
@@ -256,36 +264,25 @@ html
               pre
                 | class A extends B implements D, E
         article
-          h2 Enums
+          h2
+            a(href="https://www.typescriptlang.org/play/index.html#src=enum%20Style%20%7B%0D%0A%20%20%20%20NONE%20%3D%200%2C%0D%0A%20%20%20%20BOLD%20%3D%201%2C%0D%0A%20%20%20%20ITALIC%20%3D%202%2C%0D%0A%20%20%20%20UNDERLINE%20%3D%204%2C%0D%0A%20%20%20%20EMPHASIS%20%3D%20Style.BOLD%20%7C%20Style.ITALIC%2C%0D%0A%20%20%20%20HYPERLINK%20%3D%20Style.BOLD%20%7C%20Style.UNDERLINE%2C%0D%0A%7D%0D%0A")
+              | Enums
           ul.build
             li
               pre
                 | enum Style {
                 |   NONE = 0,
                 |   BOLD = 1,
-                |   ITALIC = 1,
-                |   UNDERLINE = 1,
+                |   ITALIC = 2,
+                |   UNDERLINE = 4,
                 |   EMPHASIS = Style.BOLD | Style.ITALIC,
                 |   HYPERLINK = Style.BOLD | Style.UNDERLINE,
-                | }
-            li
-              pre
-                | enum ShiftplanStatus {
-                |   New,
-                |   Published,
                 | }
         article
-          ul
-            li
-              pre
-                | enum Style {
-                |   NONE = 0,
-                |   BOLD = 1,
-                |   ITALIC = 1,
-                |   UNDERLINE = 1,
-                |   EMPHASIS = Style.BOLD | Style.ITALIC,
-                |   HYPERLINK = Style.BOLD | Style.UNDERLINE,
-                | }
+          h2
+            a(href="https://www.typescriptlang.org/play/index.html#src=enum%20ShiftplanStatus%20%7B%0D%0A%20%20New%2C%0D%0A%20%20Published%2C%0D%0A%7D%0D%0A")
+              | Enums
+          ul.build
             li
               pre
                 | enum ShiftplanStatus {
@@ -316,22 +313,25 @@ html
           ul.build
             li
               pre
-                | interface Array<T> {
+                | interface Array&lt;T&gt; {
                 |   ...
-                |   map<U>(cb: (value: T) => U): U[];
+                |   map&lt;U&gt;(cb: (value: T) => U): U[];
                 |   ...
                 | }
         article.section
           h1 Thats it
         article
-          h2 How to Start?
+          h2 Whats next?
           ul.build
             li
-              a(href="https://www.typescriptlang.org/play") Playground
+              a(href="https://www.typescriptlang.org/play")
+                | https://www.typescriptlang.org/play
             li
+              a(href="https://tamino-martinius.github.io/lets-talk-about---typescript")
+                | https://tamino-martinius.github.io/lets-talk-about---typescript
+            li
+              br
               pre npm install typescript -g
-            li
-              a(href="https://tamino-martinius.github.io/lets-talk-about---typescript") Slides & demo
         article.section
           h1 Questions?
 
