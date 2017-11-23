@@ -99,7 +99,7 @@ html
               pre
                 | const isActive: boolean = false;
             li
-              | number
+              | string
               pre
                 | const name: string = 'Tamino';
         article
@@ -110,13 +110,13 @@ html
                 | let param: string | undefined;
             li
               pre
-                | let param: string | undefined = 'foo';
+                | param = 'foo';
             li
               pre
-                | let param: string | undefined = undefined;
+                | param = undefined;
             li
               pre
-                | let param: string | undefined = 8; // 💩
+                | param = 8; // 💩
         article
           h2 Combined Types
           ul.build
