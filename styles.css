@@ -22,6 +22,25 @@ body {
 .slides {
   display: table;
 }
+.slide-area {
+  height: 100vh;
+  width: 10vw;
+  position: absolute;
+}
+#prev-slide-area {
+  left: 0;
+}
+#prev-slide-area:hover {
+  background: -webkit-gradient(linear, left top, right top, color-stop(0, #6c6), color-stop(10%, rgba(255,255,255,0)));
+  background: linear-gradient(90deg, #6c6 0, rgba(255,255,255,0) 10%);
+}
+#next-slide-area {
+  right: 0;
+}
+#next-slide-area:hover {
+  background: -webkit-gradient(linear, right top, left top, color-stop(0, #6c6), color-stop(10%, rgba(255,255,255,0)));
+  background: linear-gradient(270deg, #6c6 0, rgba(255,255,255,0) 10%);
+}
 article {
   vertical-align: middle;
   display: none;
@@ -86,6 +105,7 @@ h6 {
   text-shadow: 0 0 1px #000;
   margin: 1vh;
 }
+em,
 a,
 a:visited,
 a:hover {
@@ -105,6 +125,14 @@ ul {
   font-size: 3vw;
   line-height: 2em;
   padding-left: 10vw;
+}
+video,
+img {
+  width: 80%;
+  max-width: 80vw;
+  max-height: 80vh;
+  display: block;
+  margin: 0 auto;
 }
 /* Pretty printing styles. Used with prettify.js. */
 /* Vim sunburst theme by David Leibovic */
@@ -163,18 +191,38 @@ ul {
 .slides pre.prettyprint .dec {
   color: #3387cc;
 }
-.slides ol.linenums {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #aeaeae;
+.slides .linenums ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.slides li.L0,
-.slides li.L1,
-.slides li.L2,
-.slides li.L3,
-.slides li.L5,
-.slides li.L6,
-.slides li.L7,
-.slides li.L8 {
-  list-style-type: none;
+.slides .linenums ol li {
+  background: #000;
+}
+.slides .linenums.h0 li.L0,
+.slides .linenums.h1 li.L1,
+.slides .linenums.h2 li.L2,
+.slides .linenums.h3 li.L3,
+.slides .linenums.h4 li.L4,
+.slides .linenums.h5 li.L5,
+.slides .linenums.h6 li.L6,
+.slides .linenums.h7 li.L7,
+.slides .linenums.h8 li.L8,
+.slides .linenums.h9 li.L9 {
+  background: rgba(102,204,102,0.4);
+}
+ul.horizontal {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+ul.horizontal ul {
+  padding: 0;
+}
+ul.horizontal li {
+  padding: 1vw;
+  width: 100%;
+  text-align: center;
 }
