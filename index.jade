@@ -9,6 +9,9 @@ html
       section.slides.layout-regular.template-default
         article
           h2 Lets Talk about...
+          h1 &nbsp;
+        article
+          h2 Lets Talk about...
           h1 TypeScript
         article
           h1 What is TypeScript?
@@ -151,13 +154,13 @@ html
                 | const phoneBook: { [name: string]: string };
             li
               pre
-                | phoneBook['Tamino'] = '01577 3752563';
+                | phoneBook['Tamino'] = '01577 1234567';
             li
               pre
-                | phoneBook['Tamino'] = 15773752563; // 💩
+                | phoneBook['Tamino'] = 15771234567; // 💩
             li
               pre
-                | phoneBook[0] = '01577 3752563'; // 💩
+                | phoneBook[0] = '01577 1234567'; // 💩
         article
           h2 Dictionaries
           ul.build
@@ -325,10 +328,10 @@ html
           ul.build
             li
               a(href="https://www.typescriptlang.org/play")
-                | https://www.typescriptlang.org/play
+                | Playground
             li
               a(href="https://tamino-martinius.github.io/lets-talk-about---typescript")
-                | https://tamino-martinius.github.io/lets-talk-about---typescript
+                | Slides
             li
               br
               pre npm install typescript -g
