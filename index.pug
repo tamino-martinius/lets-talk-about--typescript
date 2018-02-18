@@ -1,0 +1,343 @@
+doctype html
+html
+  head
+      title Lets talk about ... TypeScript
+      meta(charset='utf-8')
+      script
+        | window.PERMANENT_URL_PREFIX = window.PERMANENT_URL_PREFIX || 'node_modules/lets-talk-about--template/assets/vendor/';
+      script(src='node_modules/lets-talk-about--template/assets/vendor/slides.js')
+      link(href='styles.css'  rel='stylesheet' type='text/css')
+  body
+    section.slides.layout-regular.template-default
+      article
+        h2 Lets Talk about...
+        h1 &nbsp;
+      article
+        h2 Lets Talk about...
+        h1 TypeScript
+      article
+        h1 What is TypeScript?
+      article
+        h2 What is TypeScript?
+        ul.build
+          li ES6+ with optional typings
+          li Compiles to plain JavaScript
+          li Open source language by Microsoft
+          li Very good integration in VS Code
+      article
+        h2 What is TypeScript?
+        ul
+          li ES6+ with optional typings
+          li Compiles to plain JavaScript
+          li Open source language by Microsoft
+          li Very good integration in VS Code & others
+      article
+        h1 Static typed languages
+      article
+        h2 Static typed languages
+        ul.build
+          li
+            | Java
+            pre
+              | String name = 'Tamino';
+          li
+            | C#
+            pre
+              | string name = 'Tamino';
+          li
+            | Objective-C
+            pre
+              | NSString name = 'Tamino';
+      article
+        h1 Optionally typed
+      article
+        h2 Optionally typed
+        ul.build
+          li
+            | with type
+            pre
+              | const name: string = 'Tamino';
+          li
+            | without type
+            pre
+              | const name = 'Tamino';
+          li
+            | implies*
+            pre
+              | const name: any = 'Tamino';
+      article
+        h2 Optionally typed
+        ul
+          li
+            | with type
+            pre
+              | const name: string = 'Tamino';
+          li
+            | without type
+            pre
+              | const name = 'Tamino';
+          li
+            | implies
+            pre
+              | const name: string = 'Tamino';
+      article
+        h1 Why TypeScript?
+      article
+        h1 Productivity
+      article
+        h1 Reliability
+      article
+        h1
+          a(href="https://www.typescriptlang.org/play/index.html#src=function%20shiftplanPublishedMailer(receipient)%20%7B%0D%0A%20%20%20%20console.log(%0D%0A%20%20%20%20%20%20%20%20receipient.name%20%2B%20'%3C'%20%2B%20receipient.email%20%2B%20'%3E'%0D%0A%20%20%20%20)%3B%0D%0A%7D%0D%0A")
+            | Demo
+      article.section
+        h1 TypeScript Overview
+      article
+        h2 Basic Types
+        ul.build
+          li
+            | number
+            pre
+              | const luckyNumber: number = 8;
+          li
+            | boolean
+            pre
+              | const isActive: boolean = false;
+          li
+            | string
+            pre
+              | const name: string = 'Tamino';
+      article
+        h2 Multiple Types
+        ul.build
+          li
+            pre
+              | let param: string | undefined;
+          li
+            pre
+              | param = 'foo';
+          li
+            pre
+              | param = undefined;
+          li
+            pre
+              | param = 8; // 💩
+      article
+        h2 Combined Types
+        ul.build
+          li
+            pre
+              | type optionalString = string | undefined;
+              | let param: optionalString;
+              | let param?: string;
+          li
+            pre
+              | type vote = 'yay' | 'nay';
+      article
+        h2 Array Declarations
+        ul.build
+          li
+            | normal
+            pre
+              | const shifts: Shift[];
+          li
+            | alternate
+            pre
+              | const shifts: Array&lt;Shift&gt;;
+          li
+            | Multi Dimensional
+            pre
+              | const shiftLists: Shift[][];
+      article
+        h2 Dictionaries
+        ul.build
+          li
+            pre
+              | const phoneBook: { [name: string]: string };
+          li
+            pre
+              | phoneBook['Tamino'] = '01577 1234567';
+          li
+            pre
+              | phoneBook['Tamino'] = 15771234567; // 💩
+          li
+            pre
+              | phoneBook[0] = '01577 1234567'; // 💩
+      article
+        h2 Dictionaries
+        ul.build
+          li
+            pre
+              | const phoneBook: {
+              |   emergency: string;
+              |   [name: string]: string;
+              | };
+          li
+            pre
+              | class Foo {
+              |   [key: string]: any;
+              | }
+      article
+        h2 Functions
+        ul.build
+          li
+            pre
+              | const callback: ( shifts: Shift[]) => void;
+          li
+            pre
+              | class Foo {
+              |   bar(params: string[]): string { ... }
+              | }
+      article
+        h2 Function overloading
+        ul.build
+          li
+            pre
+              | class Foo {
+              |   bar(params: string[]): string { ... }
+              | }
+      article
+        h2 Function overloading
+        ul
+          li
+            pre
+              | type nuStr = number | str;
+              | class Foo {
+              |   bar(params: nuStr[]): nuStr { ... }
+              | }
+      article
+        h2 Function overloading
+        ul
+          li
+            pre
+              | class Foo {
+              |   bar(params: string[]): string
+              |   bar(params: number[]): number
+              |   { ... }
+              | }
+      article
+        h2 Classes
+        ul.build
+          li
+            pre
+              | class Foo {
+              |   public static readonly TABLE_NAME = 1;
+              |   private static _name: string;
+              | }
+      article
+        h2 Classes
+        ul
+          li
+            pre
+              | class Foo {
+              |   public static readonly TABLE_NAME;
+              |   private static _name: string;
+              |   static get TABLE_NAME {
+              |     return this._name.toUpperCase();
+              |   }
+              | }
+      article
+        h2 Interfaces
+        ul.build
+          li
+            pre
+              | interface IEmailable {
+              |   name: string;
+              |   email: string;
+              | }
+          li
+            pre
+              | interface Employment extends IEmailable
+          li
+            pre
+              | class Employment implements IEmailable
+      article
+        ul
+          li
+            pre
+              | interface IEmailable {
+              |   name: string;
+              |   email: string;
+              | }
+          li
+            pre
+              | interface Employment extends IEmailable
+          li
+            pre
+              | class Employment implements IEmailable
+          li
+            pre
+              | class A extends B implements D, E
+      article
+        h2
+          a(href="https://www.typescriptlang.org/play/index.html#src=enum%20Style%20%7B%0D%0A%20%20%20%20NONE%20%3D%200%2C%0D%0A%20%20%20%20BOLD%20%3D%201%2C%0D%0A%20%20%20%20ITALIC%20%3D%202%2C%0D%0A%20%20%20%20UNDERLINE%20%3D%204%2C%0D%0A%20%20%20%20EMPHASIS%20%3D%20Style.BOLD%20%7C%20Style.ITALIC%2C%0D%0A%20%20%20%20HYPERLINK%20%3D%20Style.BOLD%20%7C%20Style.UNDERLINE%2C%0D%0A%7D%0D%0A")
+            | Enums
+        ul.build
+          li
+            pre
+              | enum Style {
+              |   NONE = 0,
+              |   BOLD = 1,
+              |   ITALIC = 2,
+              |   UNDERLINE = 4,
+              |   EMPHASIS = Style.BOLD | Style.ITALIC,
+              |   HYPERLINK = Style.BOLD | Style.UNDERLINE,
+              | }
+      article
+        h2
+          a(href="https://www.typescriptlang.org/play/index.html#src=enum%20ShiftplanStatus%20%7B%0D%0A%20%20New%2C%0D%0A%20%20Published%2C%0D%0A%7D%0D%0A")
+            | Enums
+        ul.build
+          li
+            pre
+              | enum ShiftplanStatus {
+              |   New,
+              |   Published,
+              | }
+      article
+        h2 Get Enum Values
+        ul.build
+          li
+            pre
+              | const style: number = Style.ITALIC; // 2
+          li
+            pre
+              | let status: string;
+              | status = Status[Status.New]; // 'New'
+      article
+        h2 Modules
+        ul.build
+          li
+            pre
+              | module Shyftplan {
+              |   export class Employment;
+              |   ...
+              | }
+      article
+        h2 Generics
+        ul.build
+          li
+            pre
+              | interface Array&lt;T&gt; {
+              |   ...
+              |   map&lt;U&gt;(cb: (value: T) => U): U[];
+              |   ...
+              | }
+      article.section
+        h1 Thats it
+      article
+        h2 Whats next?
+        ul.build
+          li
+            a(href="https://www.typescriptlang.org/play")
+              | Playground
+          li
+            a(href="https://tamino-martinius.github.io/lets-talk-about--typescript")
+              | Slides
+          li
+            br
+            pre npm install typescript -g
+      article.section
+        h1 Questions?
+
+    script(src='node_modules/lets-talk-about--template/assets/scripts/main.js')
