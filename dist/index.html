@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><title>Lets talk about ... TypeScript</title><meta charset="utf-8"><link href="/styles.fa74dd77.css" rel="stylesheet" type="text/css"></head><body><section class="slides layout-regular template-default"><article class="build"><h2>Lets Talk about...</h2><h1>TypeScript</h1></article><article><h1>What is TypeScript?</h1></article><article><h2>What is TypeScript?</h2><ul class="build"><li>ES6+ with optional typings</li><li>Compiles to plain JavaScript</li><li>Open source language by Microsoft</li><li>Very good integration in VS Code</li></ul></article><article><h2>What is TypeScript?</h2><ul><li>ES6+ with optional typings</li><li>Compiles to plain JavaScript</li><li>Open source language by Microsoft</li><li>Very good integration in VS Code & others</li></ul></article><article><h1>Static typed languages</h1></article><article><h2>Static typed languages</h2><ul class="build"><li>Java<pre>String name = 'Tamino';</pre></li><li>C#<pre>string name = 'Tamino';</pre></li><li>Objective-C<pre>NSString name = 'Tamino';</pre></li></ul></article><article><h1>Optionally typed</h1></article><article><h2>Optionally typed</h2><ul class="build"><li>with type<pre>const name: string = 'Tamino';</pre></li><li>without type<pre>const name = 'Tamino';</pre></li><li>implies*<pre>const name: any = 'Tamino';</pre></li></ul></article><article><h2>Optionally typed</h2><ul><li>with type<pre>const name: string = 'Tamino';</pre></li><li>without type<pre>const name = 'Tamino';</pre></li><li>implies<pre>const name: string = 'Tamino';</pre></li></ul></article><article><h1>Why TypeScript?</h1></article><article><h1>Productivity</h1></article><article><h1>Reliability</h1></article><article><h1><a href="https://www.typescriptlang.org/play/index.html#src=function%20shiftplanPublishedMailer(receipient)%20%7B%0D%0A%20%20%20%20console.log(%0D%0A%20%20%20%20%20%20%20%20receipient.name%20%2B%20'%3C'%20%2B%20receipient.email%20%2B%20'%3E'%0D%0A%20%20%20%20)%3B%0D%0A%7D%0D%0A">Demo</a></h1></article><article class="section"><h1>TypeScript Overview</h1></article><article><h2>Basic Types</h2><ul class="build"><li>number<pre>const luckyNumber: number = 8;</pre></li><li>boolean<pre>const isActive: boolean = false;</pre></li><li>string<pre>const name: string = 'Tamino';</pre></li></ul></article><article><h2>Multiple Types</h2><ul class="build"><li><pre>let param: string | undefined;</pre></li><li><pre>param = 'foo';</pre></li><li><pre>param = undefined;</pre></li><li><pre>param = 8; // 💩</pre></li></ul></article><article><h2>Combined Types</h2><ul class="build"><li><pre>type optionalString = string | undefined;
+let param: optionalString;
+let param?: string;</pre></li><li><pre>type vote = 'yay' | 'nay';</pre></li></ul></article><article><h2>Array Declarations</h2><ul class="build"><li>normal<pre>const shifts: Shift[];</pre></li><li>alternate<pre>const shifts: Array&lt;Shift&gt;;</pre></li><li>Multi Dimensional<pre>const shiftLists: Shift[][];</pre></li></ul></article><article><h2>Dictionaries</h2><ul class="build"><li><pre>const phoneBook: { [name: string]: string };</pre></li><li><pre>phoneBook['Tamino'] = '01577 1234567';</pre></li><li><pre>phoneBook['Tamino'] = 15771234567; // 💩</pre></li><li><pre>phoneBook[0] = '01577 1234567'; // 💩</pre></li></ul></article><article><h2>Dictionaries</h2><ul class="build"><li><pre>const phoneBook: {
+  emergency: string;
+  [name: string]: string;
+};</pre></li><li><pre>class Foo {
+  [key: string]: any;
+}</pre></li></ul></article><article><h2>Functions</h2><ul class="build"><li><pre>const callback: ( shifts: Shift[]) => void;</pre></li><li><pre>class Foo {
+  bar(params: string[]): string { ... }
+}</pre></li></ul></article><article><h2>Function overloading</h2><ul class="build"><li><pre>class Foo {
+  bar(params: string[]): string { ... }
+}</pre></li></ul></article><article><h2>Function overloading</h2><ul><li><pre>type nuStr = number | str;
+class Foo {
+  bar(params: nuStr[]): nuStr { ... }
+}</pre></li></ul></article><article><h2>Function overloading</h2><ul><li><pre>class Foo {
+  bar(params: string[]): string
+  bar(params: number[]): number
+  { ... }
+}</pre></li></ul></article><article><h2>Classes</h2><ul class="build"><li><pre>class Foo {
+  public static readonly TABLE_NAME = 1;
+  private static _name: string;
+}</pre></li></ul></article><article><h2>Classes</h2><ul><li><pre>class Foo {
+  public static readonly TABLE_NAME;
+  private static _name: string;
+  static get TABLE_NAME {
+    return this._name.toUpperCase();
+  }
+}</pre></li></ul></article><article><h2>Interfaces</h2><ul class="build"><li><pre>interface IEmailable {
+  name: string;
+  email: string;
+}</pre></li><li><pre>interface Employment extends IEmailable</pre></li><li><pre>class Employment implements IEmailable</pre></li></ul></article><article><ul><li><pre>interface IEmailable {
+  name: string;
+  email: string;
+}</pre></li><li><pre>interface Employment extends IEmailable</pre></li><li><pre>class Employment implements IEmailable</pre></li><li><pre>class A extends B implements D, E</pre></li></ul></article><article><h2><a href="https://www.typescriptlang.org/play/index.html#src=enum%20Style%20%7B%0D%0A%20%20%20%20NONE%20%3D%200%2C%0D%0A%20%20%20%20BOLD%20%3D%201%2C%0D%0A%20%20%20%20ITALIC%20%3D%202%2C%0D%0A%20%20%20%20UNDERLINE%20%3D%204%2C%0D%0A%20%20%20%20EMPHASIS%20%3D%20Style.BOLD%20%7C%20Style.ITALIC%2C%0D%0A%20%20%20%20HYPERLINK%20%3D%20Style.BOLD%20%7C%20Style.UNDERLINE%2C%0D%0A%7D%0D%0A">Enums</a></h2><ul class="build"><li><pre>enum Style {
+  NONE = 0,
+  BOLD = 1,
+  ITALIC = 2,
+  UNDERLINE = 4,
+  EMPHASIS = Style.BOLD | Style.ITALIC,
+  HYPERLINK = Style.BOLD | Style.UNDERLINE,
+}</pre></li></ul></article><article><h2><a href="https://www.typescriptlang.org/play/index.html#src=enum%20ShiftplanStatus%20%7B%0D%0A%20%20New%2C%0D%0A%20%20Published%2C%0D%0A%7D%0D%0A">Enums</a></h2><ul class="build"><li><pre>enum ShiftplanStatus {
+  New,
+  Published,
+}</pre></li></ul></article><article><h2>Get Enum Values</h2><ul class="build"><li><pre>const style: number = Style.ITALIC; // 2</pre></li><li><pre>let status: string;
+status = Status[Status.New]; // 'New'</pre></li></ul></article><article><h2>Modules</h2><ul class="build"><li><pre>module Shyftplan {
+  export class Employment;
+  ...
+}</pre></li></ul></article><article><h2>Generics</h2><ul class="build"><li><pre>interface Array&lt;T&gt; {
+  ...
+  map&lt;U&gt;(cb: (value: T) => U): U[];
+  ...
+}</pre></li></ul></article><article class="section"><h1>Thats it</h1></article><article><h2>Whats next?</h2><ul class="build"><li><a href="https://www.typescriptlang.org/play">Playground</a></li><li><a href="https://tamino-martinius.github.io/lets-talk-about--typescript">Slides</a></li><li><br><pre>npm install typescript -g</pre></li></ul></article><article class="section"><h1>Questions?</h1></article></section><script src="/main.66973e2c.js"></script></body></html>
